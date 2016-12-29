@@ -1,0 +1,5 @@
+.idea/
+_include/img/
+*.min.css
+*.min.js
+robots.txt
