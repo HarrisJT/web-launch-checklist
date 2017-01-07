@@ -1,3 +1,5 @@
+```npm install``` in the root directory of this project
+
 # Project Title
 
 One Paragraph of project description goes here
@@ -11,7 +13,6 @@ What things you need to install the software and how to install them
 ```
 Give examples
 ```
-
 
 A step by step series of examples that tell you have to get a development env running
 

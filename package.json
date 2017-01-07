@@ -1,0 +1,30 @@
+{
+  "name": "HJTemplate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarrisJT/HJTemplate.git"
+  },
+  "keywords": [
+    "template",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "Harris J Thompson",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-babili": "0.0.9",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-csscomb": "^3.0.8",
+    "gulp-imagemin": "^3.1.1",
+    "gulp-minify-css": "^1.2.4"
+  }
+}
