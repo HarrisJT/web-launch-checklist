@@ -1,5 +1,5 @@
 {
-  "name": "HJTemplate",
+  "name": "LaunchChecklist",
   "version": "0.0.1",
   "description": "",
   "main": "gulpfile.js",
@@ -19,12 +19,13 @@
   "author": "Harris J Thompson",
   "license": "MIT",
   "devDependencies": {
-    "babel-preset-babili": "0.0.12",
+    "babel-preset-babili": "^0.1.2",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-autoprefixer": "^3.1.1",
+    "gulp-autoprefixer": "^4.0.0",
     "gulp-babel": "^6.1.2",
     "gulp-clean-css": "^3.0.4",
     "gulp-concat": "^2.6.1",
-    "gulp-csscomb": "^3.0.8"
+    "gulp-csscomb": "^3.0.8",
+    "gulp-sass": "^3.1.0"
   }
 }

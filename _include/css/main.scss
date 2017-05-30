@@ -1,0 +1,478 @@
+// ! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css
+
+html {
+  line-height: 1.15;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+article,
+aside,
+footer,
+header,
+nav,
+section {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+button,
+input {
+  overflow: visible;
+}
+
+button,
+select {
+  text-transform: none;
+}
+
+button,
+html [type="button"],
+[type="reset"],
+[type="submit"] {
+  -webkit-appearance: button;
+}
+
+button::-moz-focus-inner,
+[type="button"]::-moz-focus-inner,
+[type="reset"]::-moz-focus-inner,
+[type="submit"]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+// BASE STYLES ==========================================================================
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: .02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #585afa;
+  color: #f2f2f2;
+}
+
+a {
+  color: #57d490;
+  transition: all .2s ease;
+  text-decoration: none;
+  border-bottom: 1px solid #57d490;
+  text-shadow: 0 1px 0 #585afa;
+
+  &:hover {
+    border-bottom: 2px solid #bf6bfe;
+  }
+}
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+// CUSTOM STYLES ==========================================================================
+
+.title {
+  text-align: center;
+  font-weight: 500;
+  font-size: 3.5em;
+  color: #e6e6e6;
+  margin: .5em .2em .375em;
+}
+
+.progress {
+  margin-bottom: 5px;
+  text-align: center;
+
+  &__count {
+    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    letter-spacing: .05em;
+    font-size: 1.15em;
+  }
+
+  &__reset {
+    font-family: inherit;
+    outline: none;
+    color: inherit;
+    cursor: pointer;
+    background: rgba(33, 16, 118, .75);
+    box-shadow: 0 4px 6px rgba(33, 16, 118, .11), 0 1px 3px rgba(33, 16, 118, .1);
+    margin-left: .75em;
+    padding: 0 14px;
+    border-radius: 3px;
+    display: inline-block;
+    height: 37px;
+    line-height: 37px;
+    border: 1px solid #211076;
+    transition: all .3s ease;
+    letter-spacing: .025em;
+
+    &:hover {
+      box-shadow: 0 7px 14px rgba(33, 16, 118, .08), 0 3px 6px rgba(33, 16, 118, .1);
+      background: rgba(189, 106, 255, .8);
+    }
+
+    &:active {
+      box-shadow: 0 4px 6px rgba(33, 16, 118, .11), 0 1px 3px rgba(33, 16, 118, .1);
+    }
+
+    &--pressed {
+      animation: wiggle .35s ease alternate;
+    }
+  }
+
+  &__border {
+    display: block;
+    margin-top: 12px;
+    border-bottom: 3px solid #57d490;
+    box-shadow: 0 20px 20px -20px rgba(33, 16, 118, .5);
+  }
+
+  &__bar {
+    display: block;
+    transform: scaleX(0);
+    transform-origin: left;
+    height: 17px;
+    background: #21acb3;
+    transition: transform .5s ease;
+  }
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0 auto;
+  max-width: 1550px;
+
+  .checklist {
+    max-width: 400px;
+    min-width: 350px;
+    margin: 15px 15px 0;
+
+    .checklist-container {
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+
+.checklist__title {
+  color: #e6e6e6;
+  font-size: 2.125em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.checklist__title-border {
+  display: block;
+  width: 350px;
+  margin-top: 8px;
+  border-bottom: 2px solid #21acb3;
+  box-shadow: 0 15px 15px -15px rgba(33, 16, 118, .5);
+}
+
+.checklist__percentage-border {
+  display: block;
+  transform: scaleX(0);
+  width: 350px;
+  transform-origin: left;
+  margin-bottom: 8px;
+  height: 6px;
+  background: #57d490;
+  transition: transform .35s ease;
+}
+
+.checklist-item {
+  display: block;
+  margin: 15px 0;
+}
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  top: 1px;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #211076;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+  cursor: pointer;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    width: 6px;
+    height: 12px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #bf6bfe;
+    border-bottom: 2px solid #bf6bfe;
+    transition: all 0.325s ease;
+  }
+}
+
+.checklist-item__title {
+  display: inline-block;
+  width: calc(100% - 48px);
+  font-size: 1.125em;
+  line-height: 1.25;
+  vertical-align: top;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  display: none;
+
+  &:checked {
+
+    & ~ .checkbox {
+      border-color: transparent;
+      background: #211076;
+      animation: wiggle 0.5s ease;
+
+      &:after {
+        opacity: 1;
+        transform: rotate(45deg) scale(1);
+      }
+    }
+
+    & ~ .checklist-item__title {
+      text-decoration: line-through;
+      transition: all .175s ease;
+      opacity: .5;
+    }
+  }
+}
+
+@keyframes wiggle {
+  from {
+    transform: scale(1, 1);
+  }
+
+  30% {
+    transform: scale(1.25, .75);
+  }
+
+  40% {
+    transform: scale(.75, 1.25);
+  }
+
+  50% {
+    transform: scale(1.15, .85);
+  }
+
+  65% {
+    transform: scale(.95, 1.05);
+  }
+
+  75% {
+    transform: scale(1.05, .95);
+  }
+
+  to {
+    transform: scale(1, 1);
+  }
+}
+
+.checklist-item__expand {
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  width: 20px;
+  height: 20px;
+  float: right;
+}
+
+.line {
+  display: block;
+  width: 20px;
+  height: 4px;
+  background: #211076;
+  position: relative;
+  top: 50%;
+  transition: all 0.3s cubic-bezier(.76, -0.26, .15, 1.32);
+  transform: translateY(-50%);
+  transform-origin: center center;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 4px;
+    background: #211076;
+    position: absolute;
+    transition: all 0.3s cubic-bezier(.76, -0.26, .15, 1.32);
+    transform-origin: center center;
+    transform: rotate(90deg);
+  }
+}
+
+.closed.line {
+  transform: rotate(180deg);
+  background: #bf6bfe;
+  top: 45%;
+
+  &:after {
+    transform: rotate(0deg);
+    background: transparent;
+  }
+}
+
+.info-container {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease-in;
+  line-height: 1.4;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-size: 1.063em;
+
+  ul {
+    padding-left: 26px;
+    list-style-type: disc;
+  }
+
+  li {
+    margin-top: .25em;
+  }
+
+  .info {
+    border-bottom: 1px solid #b5adde;
+    margin-top: .55em;
+    margin-bottom: .2em;
+    padding-bottom: .75em;
+  }
+}
+
+.checklist .open .info-container {
+  max-height: 500px;
+}
+
+footer {
+  align-self: center;
+  margin-top: 2em;
+  border-top: 1px solid #57b26e;
+  padding: .85em 1.85em;
+  text-align: center;
+  font-weight: 300;
+
+  span {
+    color: #bf6bfe;
+    font-size: 1.45em;
+    font-weight: 500;
+    padding: 0 .175em;
+    vertical-align: middle;
+  }
+}
+
+// MEDIA QUERIES ==========================================================================
+
+@media only screen and (min-width: 30em) {
+
+}
+
+// PRINT STYLES ==========================================================================
+
+@media print {
+  *,
+  *:before,
+  *:after,
+  *:first-letter,
+  *:first-line {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  a[href^="#"]:after,
+  a[href^="javascript:"]:after {
+    content: "";
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}

@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 const autoprefixer = require('gulp-autoprefixer');
+const sass = require("gulp-sass");
 const csscomb = require('gulp-csscomb');
 const cleanCSS = require('gulp-clean-css');
 
@@ -13,7 +14,8 @@ gulp.task('js', function () {
 });
 
 gulp.task('css', function () {
-  return gulp.src('_include/css/main.css')
+  return gulp.src('_include/css/main.scss')
+      .pipe(sass().on('error', sass.logError))
       .pipe(autoprefixer({
         browsers: ['last 2 versions'],
         cascade: false,
@@ -27,6 +29,6 @@ gulp.task('css', function () {
 
 gulp.task('default', gulp.series('js', 'css', function (done) {
   gulp.watch('_include/js/main.js', gulp.task('js'));
-  gulp.watch('_include/css/main.css', gulp.task('css'));
+  gulp.watch('_include/css/main.scss', gulp.task('css'));
   done();
 }));

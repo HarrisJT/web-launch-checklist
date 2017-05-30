@@ -1,0 +1,12 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "linebreak-style": [
+      "error",
+      "windows"
+    ]
+  }
+}

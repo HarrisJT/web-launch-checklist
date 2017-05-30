@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="page--home">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0">
@@ -7,20 +7,18 @@
     <link rel="preconnect" href="//fonts.googleapis.com">
     <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="//fonts.googleapis.com/">
+    <!--TODO: Change to used styles-->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Rubik:300,400,500">
 
-    <!--TODO: Change to main.min.* for production-->
-    <link rel="stylesheet" href="_include/css/main.css">
-    <script type="text/javascript" src="_include/js/main.js" async></script>
-
-    <!-- TODO: Preload any important above the fold images
-    <link rel="preload" href="_include/img/" as="image">
-    -->
+    <!--TODO: Change to main.min.* tion-->
+    <link rel="stylesheet" href="_include/css/main.min.css">
+    <script type="text/javascript" src="_include/js/main.min.js" async></script>
 
     <link rel="preconnect" href="//www.google-analytics.com">
     <link rel="preconnect" href="https://www.google-analytics.com">
 
-    <title>???</title>
+    <title>Web Launch Checklist</title>
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@harrisjt_">
@@ -32,11 +30,687 @@
 
     <link rel="shortcut icon" href="_include/img/favicon.ico">
     <link rel="apple-touch-icon-precomposed" href="_include/img/favicon.ico">
-    <meta name="description" content="">
-    <link rel="canonical" href="http?://???.com/">
+    <meta name="description"
+          content="A simple website launch checklist to keep track of the most important enrichment possibilities for a website.">
+    <link rel="canonical" href="http?://???.com">
 
 </head>
 <body>
+<header>
+    <h1 class="title">Web Launch Checklist</h1>
+    <div class="progress">
+        <span class="progress__count"></span>
+        <input class="progress__reset" type="reset" value="Reset">
+        <span class="progress__border"></span>
+        <span class="progress__bar"></span>
+    </div>
+
+</header>
+<div class="container">
+    <section class="checklist">
+        <h2 class="checklist__title">Performance</h2>
+        <span class="checklist__title-border"></span>
+        <span class="checklist__percentage-border"></span>
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Image Optimization</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+                <div class="info-container">
+                    <div class="info">
+                        <ul>
+                            <li>Compress all your images using processors such as <a
+                                    href="https://compressor.io/compress" target="_blank"
+                                    rel="noopener">Compressor.io</a> on
+                                the web, or <a target="_blank" rel="noopener"
+                                               href="http://nikkhokkho.sourceforge.net/static.php?page=FileOptimizer"
+                                >FileOptimizer</a>
+                                as a desktop app.
+                            </li>
+                            <li>Generate the exact image size for each element instead of resizing it with CSS/HTML as
+                                this can be a heavy process for the browser to perform.
+                            </li>
+                            <li>Utilize <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS">Image
+                                Sprites</a> to save on HTTP requests and bandwidth.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Reduce Page Weight &amp; Requests</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Here are some tips to keep your page weight under 2MB and 50 requests:
+                        <ul>
+                            <li>Limit 3rd party libraries &amp; scripts</li>
+                            <li>Load resources & requests asynchronously</li>
+                            <li>Consider a <a target="_blank" rel="noopener"
+                                              href="https://en.wikipedia.org/wiki/Content_delivery_network">CDN</a> for
+                                static assets &amp; pages
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Limit Web Font Usage</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Many websites are loading full sets of font glyphs and weights they are not even
+                        using. Web fonts can also present inconsistent performance due to the reliance on third party
+                        servers for heavy font files. Try to limit your pages to 2-3 web fonts or use a
+                        <a target="_blank" rel="noopener" href="https://css-tricks.com/snippets/css/system-font-stack/">System
+                            Font Stack</a> for a
+                        comfortable look to the user.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">GZIP &amp; JS/CSS Minified</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">GZIP is a powerful compressor for text files that can be configured in the web
+                        server. Javascript and CSS files should be combined into one file and minified when served to
+                        the user to reduce the impact of loading on the critical path. I suggest the tools <a
+                                href="http://lisperator.net/uglifyjs/">UgilfyJS</a> for Javascript and <a
+                                href="https://github.com/css/csso">CSSO</a> for CSS.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Implemented HTTP/2</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">HTTP/2 is the newest HTTP protocol, has good support across browsers, and makes
+                        great improvements to load speed. <a
+                                href="https://www.redpill-linpro.com/sysadvent/2016/12/20/http2.html">Here</a> is a
+                        guide for enabling HTTP/2 in nginx.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Async &amp; Defer Attributes</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Tell the browser when to download and execute a script file so it doesn't block
+                        any other resources. I like <a
+                                href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">this
+                            guide</a> for showing what each of these script attributes do.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Resource Hinting</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">If you're using any 3rd party assets then you will have a DNS lookup attached,
+                        both these and your own resources can block each other or be loaded out-of-order. <a
+                                href="https://www.keycdn.com/blog/resource-hints/"> Here</a> is a guide for the various
+                        values of the link attribute "rel" that tells the browser when and how to handle these
+                        situations. <a target="_blank" rel="noopener"
+                                       href="https://w3c.github.io/resource-hints/#h-resource-hints">This</a> is the
+                        W3Consortium document for Resource-Hints.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Cache Headers</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Specify the [cache-control] header with a [max-age] directive in the web server to
+                        avoid having the browser set poor default versions. This will provide a huge performance savings
+                        for users who see the same resources multiple times. Static assets with versioning should be
+                        cached for as long as possible.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Consider Service Workers</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info"><a target="_blank" rel="noopener"
+                                         href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API">Service
+                        Workers</a> will give you precise control over cache and allow the creation of an offline web
+                        experience. <a target="_blank" rel="noopener"
+                                       href="https://github.com/lyzadanger/pragmatist-service-worker">Here</a> are some
+                        code examples.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Testing</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">My favorite tools are <a target="_blank" rel="noopener"
+                                                               href="http://yellowlab.tools/">YellowLab.tools</a>, <a
+                            href="http://www.webpagetest.org/">webpagetest.org</a>, and <a
+                            href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a>. Make sure to test
+                        in 4G, 3G, and Wi-Fi network environments as well as with popular devices.
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+    </section>
+    <section class="checklist">
+        <h2 class="checklist__title">SEO</h2>
+        <span class="checklist__title-border"></span>
+        <span class="checklist__percentage-border"></span>
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Page-Specific Keyword Analysis</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+                <div class="info-container">
+                    <div class="info">While less important than it used to be, keyword targeting is still one of the
+                        most common suggestions towards improving SEO ranking. Include the keyword or phrase in the:
+                        <ul>
+                            <li>URL - Make sure it's short and semantically clear</li>
+                            <li>Title Tag - Include keyword or phrase in beginning, max 70 characters</li>
+                            <li>Meta Description - Unique on every page, max 155 characters</li>
+                            <li>H1 - One per page, less important to include keyword in</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Setup Google Analytics, Google Search Console, Bing Webmaster Tools</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Google Analytics can help you target users and isolate problem areas for your
+                        website. Philip Walton explains a <a
+                                href="https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/">GA
+                            setup</a> that he uses to "reap its full benefits". Remember to connect your Search Console
+                        and Analytics! Note that Bing is more important for U.S. targeted sites.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">XML Sitemap Created &amp; Submitted</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Tools such as <a target="_blank" rel="noopener"
+                                                       href="https://www.xml-sitemaps.com/">XML-Sitemaps.com</a> make
+                        generating a sitemap simple. Submit a sitemap to all the search engines so they can more
+                        intelligently crawl your website.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Robots.txt</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">A <a target="_blank" rel="noopener" href="https://moz.com/learn/seo/robotstxt">robots.txt
+                        file</a> instructs
+                        robots which pages they can visit.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Scan for Broken Links, Errors, and Crawl Problems</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Use a tool such as <a target="_blank" rel="noopener"
+                                                            href="http://www.screamingfrog.co.uk/seo-spider/">Screaming
+                        Frog SEO Spider</a> to crawl your website and evaluate various issues related to SEO.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Canonical Links Set</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">If applicable set a canonical link on each page using an absolute URL without
+                        query strings. You should redirect traffic from www to non-www or vice-versa, lowercase, and
+                        remove the trailing slash.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Rich Snippets &amp; Structured Data</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info"><a target="_blank" rel="noopener"
+                                         href="https://raventools.com/site-auditor/seo-guide/schema-structured-data/">Structured
+                        data</a> allows search engines to better understand your HTML markup and generate rich snippets
+                        for the results page. <a target="_blank" rel="noopener"
+                                                 href="https://moz.com/learn/seo/schema-structured-data">Rich
+                            Snippets</a> don't directly affect your ranking but make the results page much more
+                        appealing and feature rich to possible visitors.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Facebook &amp; Twitter Cards Created</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Facebook's <a target="_blank" rel="noopener"
+                                                    href="https://developers.facebook.com/docs/sharing/opengraph">Open
+                        Graph</a> and Twitter's <a target="_blank" rel="noopener"
+                                                   href="https://dev.twitter.com/cards/overview">Cards</a> allow you to
+                        make social sharing much more appealing to people viewing the "share" on social media websites.
+                        Both <a target="_blank" rel="noopener" href="https://developers.facebook.com/tools/debug/">Facebook</a>
+                        and <a
+                                href="https://cards-dev.twitter.com/validator">Twitter</a>
+                        have tools to preview and debug your cards.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="checklist">
+        <h2 class="checklist__title">Security</h2>
+        <span class="checklist__title-border"></span>
+        <span class="checklist__percentage-border"></span>
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">HTTPS Everywhere</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+                <div class="info-container">
+                    <div class="info">HTTPS should be implemented not just on the login page as it is a prerequisite for
+                        a number of other technologies in security and performance. <a target="_blank" rel="noopener"
+                                                                                       href="https://letsencrypt.org/">Let's
+                            Encrypt</a> allows you to easily and freely create and manage a certificate. Make sure your
+                        Cipher Suite is up to date and enable OCSP stapling on your webserver. Test your page using
+                        <a target="_blank" rel="noopener" href="https://www.ssllabs.com/ssltest/">SSL Labs</a>.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Security Headers</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Taking the time to setup simple headers on your webserver will save you down the
+                        road.
+                        <ul>
+                            <li><a target="_blank" rel="noopener"
+                                   href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP</a> header to
+                                mitigate XSS and data injection attacks
+                            </li>
+                            <li><a target="_blank" rel="noopener"
+                                   href="https://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a> token to
+                                prevent cross site request forgery. Also add the "SameSite" attributes on cookies
+                            </li>
+                            <li><a target="_blank" rel="noopener"
+                                   href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">X-Frame-Options</a>
+                                header to protect against click-jacking
+                            </li>
+                            <li><a target="_blank" rel="noopener"
+                                   href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection">X-XSS-Protection</a>
+                                header to mitigate XSS attacks
+                            </li>
+                            <li><a target="_blank" rel="noopener"
+                                   href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a>
+                                and <a target="_blank" rel="noopener"
+                                       href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options">X-FRAME-OPTIONS</a>
+                            </li>
+                            <li>Use <a target="_blank" rel="noopener" href="https://blog.stackpath.com/glossary/hsts/">HSTS</a>
+                                responses to force TLS
+                                only access. Redirect all HTTP request to HTTPS on the server as backup.
+                            </li>
+                            <li>Cookies should be scoped by path and domain as well as utilize <a
+                                    href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies">HttpOnly,
+                                SameSite, and Secure</a> attributes
+                            </li>
+                            <li>Test using: <a target="_blank" rel="noopener" href="https://securityheaders.io/">securityheaders.io</a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Sanitize &amp; Limit User Input/Parameters</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">When parsing input, remember to sanitize for data://, javascript://, and CRLF
+                        characters. Never directly inject user content into responses or <a
+                                href="http://bobby-tables.com/">SQL statements</a>
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Password Hashes Stored in scrypt or bcrypt</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">bcrypt is much older than scrypt and has received more analysis and
+                        implementations but many suggest that scrypt is faster and stronger.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Rate Limit Slower API paths</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">In order to protect yourself from Denial-of-Service attacks, implement a rate
+                        limiter on API paths such as login or token generation.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="checklist">
+        <h2 class="checklist__title">Accessibility</h2>
+        <span class="checklist__title-border"></span>
+        <span class="checklist__percentage-border"></span>
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Contrast</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+                <div class="info-container">
+                    <div class="info">Ensure that a <a target="_blank" rel="noopener"
+                                                       href="https://www.w3.org/TR/WCAG20-TECHS/G18.html">contrast ratio
+                        of at least 4.5:1</a> exists between text and background. This improves readability for a
+                        majority of users and ensures the possibility of reading to a few. <a
+                                href="http://accessible-colors.com/">Here</a> is more explanation and some visual
+                        indicators.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Keyboard Navigation</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Make sure that the browser's keyboard shortcuts are not overwritten. <a
+                            href="https://w3c.github.io/using-aria/">Use the WAI-ARIA attributes</a> which give semantic
+                        information about role, state, and property to assistive technologies.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Menu Analysis</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Use semantic markup and clear styling to convey the menu element and structure
+                        that is consistent with every page. A usability tip is to ensure all pages are accessible
+                        through three or fewer clicks from the homepage. <a
+                                href="https://www.w3.org/WAI/tutorials/menus/">Here</a> is a guide to creating
+                        accessible menus.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Non-Textual Elements Have Alt Tags</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Alt tags provide textual interpretation to visual elements. Make sure your alt
+                        tags tell the content and function of the visual, are succinct, accurate, and do not use the
+                        phrases "image of" or "graphic of".
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Form Analysis</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info"><a target="_blank" rel="noopener"
+                                         href="http://webaim.org/techniques/forms/controls">Here</a> is a great guide
+                        for accessibility on all different form elements. Forms should be navigable using the keyboard,
+                        clear, and intuitive.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="checklist">
+        <h2 class="checklist__title">Content</h2>
+        <span class="checklist__title-border"></span>
+        <span class="checklist__percentage-border"></span>
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Spelling &amp; Readability Check</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+                <div class="info-container">
+                    <div class="info">Remove all placeholder text and images. Split up your text into small paragraphs
+                        with line length of <a target="_blank" rel="noopener"
+                                               href="https://baymard.com/blog/line-length-readability">50-75
+                            characters</a>. Test using <a target="_blank" rel="noopener"
+                                                          href="https://www.webpagefx.com/tools/read-able/">WebpageFX's
+                            Readability Test Tool</a>
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Review Contact Details &amp; Social Media</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Allow easy and correct contact information so people can report bugs &amp;
+                        vulnerabilities. Limit the amount of social media buttons to minimize requests and create more
+                        focus.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Link Analysis</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">
+                        <ul>
+                            <li>Links are descriptive and appear "clickable"</li>
+                            <li>External links use the <a
+                                    href="https://developers.google.com/web/tools/lighthouse/audits/noopener">rel="noopener"</a>
+                                attribute
+                            </li>
+                            <li>Important links don't move (auto carousels or accordions)</li>
+                            <li>Links not in navigation have title attribute</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Favicon &amp; App Icons Created</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Use a service such as <a target="_blank" rel="noopener"
+                                                               href="http://realfavicongenerator.net/">RealFaviconGenerator</a>
+                        to easily generate the many icons needed for various platforms. Test in development to ensure no
+                        errors.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Custom 404 &amp; Offline Pages</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">
+                        Create a custom 404.html page and an offline.html page and set them up on the webserver to give
+                        better feedback to the user.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <section class="checklist">
+        <h2 class="checklist__title">Functionality</h2>
+        <span class="checklist__title-border"></span>
+        <span class="checklist__percentage-border"></span>
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Compatibility With Multiple Browsers &amp; Platforms</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+                <div class="info-container">
+                    <div class="info">Test on the major browsers such as Chrome, Firefox, Safari, IE/Edge, and Opera.
+                        Utilize tools such as <a target="_blank" rel="noopener"
+                                                 href="https://modernizr.com/">Modernizr</a> to only use features that
+                        are available to the user.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Responsive Analysis</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">Responsive means that based on the width of the browser the CSS gives different
+                        style rules while all the resources stay the same. The most common change is a mobile drop-down
+                        menu. I use Chrome's device toolbar from within the
+                        Developer Tools as well as <a
+                                href="https://chrome.google.com/webstore/detail/emmet-review/epejoicbhllgiimigokgjdoijnpaphdp">Emmet
+                            Re:view</a> to test page view throughout development down to around 300px.
+                    </div>
+                </div>
+            </li>
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">Inputs are Mobile Optimized</span>
+                <button class="checklist-item__expand">
+                    <span class="line"></span>
+                </button>
+
+                <div class="info-container">
+                    <div class="info">All relevant inputs have the <a
+                            href="http://html5doctor.com/html5-forms-input-types/">type</a> attribute set for a better
+                        user experience.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </section>
+</div>
+<footer>
+    Website created by <a target="_blank" rel="noopener" href="https://harrisjt.com">HarrisJT</a> <span>/</span> View
+    the source code and suggest edits
+    on <a
+        href="">Github</a> <span>/</span> Download <a target="_blank" rel="noopener" href="">docx</a> or <a
+        target="_blank" rel="noopener"
+        href="">pdf</a> versions
+
+</footer>
 
 </body>
 </html>
