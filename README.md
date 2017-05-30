@@ -9,11 +9,11 @@ To start a development environment run these commands:
 ```gulp default``` to watch for changes in main.scss and main.js
 
 ***
-### Contributing
+## Contributing
 
 Please read the following for details on the process for submitting pull requests.
 
-Here is a sample of what the HTML code block looks like where the all caps text is replaceable. The "..." is where I removed some unimportant code.
+Here is a sample of what the HTML code block looks like where the all caps text is replaceable. The "..." is where I removed some unimportant code for the purposes of examples.
 
 ````HTML
  <section class="checklist">
@@ -36,7 +36,9 @@ You should limit yourself to editing the:
 * Checklist item title *(span class="checklist-item__title")*
 * Extra information, keep in mind that only unordered lists and links have defined styles *(div class="info")*
 
-Repeat the ```<li class="checklist-item">``` block for more checklist items.
+
+* Repeat the ```<li class="checklist-item">``` block for more checklist items.
+* Repeat the ```<section class="checklist">``` block for more checklist sections.
 ***
 
 * **Harris J Thompson** - *Creator* - [Portfolio](https://harrisjt.com/)
