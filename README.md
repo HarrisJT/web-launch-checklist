@@ -1,75 +1,47 @@
+# Web Launch Checklist
+
+This website displays the most useful and effective tips for Performance, SEO, Security, Accessibility, Content, and Functionality. I want it to be easy to edit so please fork and suggest changes!
+
+To start a development environment run these commands:
+
 ```npm install``` in the root directory of this project
 
-# Project Title
+```gulp default``` to watch for changes in main.scss and main.js
 
-One Paragraph of project description goes here
+***
+### Contributing
 
+Please read the following for details on the process for submitting pull requests.
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Here is a sample of what the HTML code block looks like where the all caps text is replaceable. The "..." is where I removed some unimportant code.
 
+````HTML
+ <section class="checklist">
+        <h2 class="checklist__title">TITLE OF SECTION</h2>
+        ...
+        <ul class="checklist-container">
+            <li class="checklist-item">
+                <input id="" type="checkbox"/><label for="" class="checkbox"></label><span
+                    class="checklist-item__title">CHECKLIST ITEM TITLE</span>
+               ...
+                <div class="info-container">
+                    <div class="info">
+                        EXTRA INFORMATION
+                    </div>
+                </div>
+            </li>
+````
+You should limit yourself to editing the:
+* Title of the section *(h2 class="checklist__title")*
+* Checklist item title *(span class="checklist-item__title")*
+* Extra information, keep in mind that only unordered lists and links have defined styles *(div class="info")*
 
-What things you need to install the software and how to install them
+Repeat the ```<li class="checklist-item">``` block for more checklist items.
+***
 
-```
-Give examples
-```
+* **Harris J Thompson** - *Creator* - [Portfolio](https://harrisjt.com/)
 
-A step by step series of examples that tell you have to get a development env running
-
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-
-Explain how to run the automated tests for this system
-
-
-Explain what these tests test and why
-
-```
-Give an example
-```
+See also the list of [contributors](https://github.com/HarrisJT/web-launch-checklist/graphs/contributors) who participated in this project.
 
 
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-
-Add additional notes about how to deploy this on a live system
-
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
-
-
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
-* Hat tip to anyone who's code was used
-* Inspiration
-* etc
+This project is licensed under the CC BY-SA 4.0 License - see the [Creative Commons License](https://creativecommons.org/licenses/by-sa/4.0/deed.en_GB) website for details
