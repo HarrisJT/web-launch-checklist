@@ -1,0 +1,19 @@
+{
+  "name": "Web Launch Checklist",
+  "short_name": "WebChecklist",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-256x256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#585afa",
+  "background_color": "#585afa",
+  "display": "standalone"
+}
