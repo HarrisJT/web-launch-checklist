@@ -66,19 +66,20 @@
                 <div class="info-container">
                     <div class="info">
                         <ul>
-                            <li>Compress all your images using processors such as <a
+                            <li>Compress all your images using either web processors such as <a
+                                    href="hhttp://optimizilla.com/" target="_blank"
+                                    rel="noopener">Optimizilla.com</a> and <a
                                     href="https://compressor.io/compress" target="_blank"
-                                    rel="noopener">Compressor.io</a> on
-                                the web, or <a target="_blank" rel="noopener"
-                                               href="http://nikkhokkho.sourceforge.net/static.php?page=FileOptimizer"
-                                >FileOptimizer</a>
-                                as a desktop app.
+                                    rel="noopener">Compressor.io</a>, or desktop apps such as <a target="_blank"
+                                                                                                 rel="noopener"
+                                                                                                 href="http://nikkhokkho.sourceforge.net/static.php?page=FileOptimizer">FileOptimizer</a>
+                                and <a target="_blank" rel="noopener" href="https://imageoptim.com/mac">ImageOptim</a>.
                             </li>
                             <li>Generate the exact image size for each element instead of resizing it with CSS/HTML as
                                 this can be a heavy process for the browser to perform.
                             </li>
                             <li>Utilize <a target="_blank" rel="noopener"
-                                    href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS">Image
+                                           href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Images/Implementing_image_sprites_in_CSS">Image
                                 Sprites</a> to save on HTTP requests and bandwidth.
                             </li>
                         </ul>
@@ -132,8 +133,10 @@
                 <div class="info-container">
                     <div class="info">GZIP is a powerful compressor for text files that can be configured in the web
                         server. Javascript and CSS files should be combined into one file and minified when served to
-                        the user to reduce the impact of loading on the critical path. I suggest the tools <a target="_blank" rel="noopener"
-                                href="http://lisperator.net/uglifyjs/">UgilfyJS</a> for Javascript and <a target="_blank" rel="noopener"
+                        the user to reduce the impact of loading on the critical path. I suggest the tools <a
+                                target="_blank" rel="noopener"
+                                href="http://lisperator.net/uglifyjs/">UgilfyJS</a> for Javascript and <a
+                                target="_blank" rel="noopener"
                                 href="https://github.com/css/csso">CSSO</a> for CSS.
                     </div>
                 </div>
@@ -148,7 +151,8 @@
                 <div class="info-container">
                     <div class="info">HTTP/2 is the newest HTTP protocol, has good support across browsers, and makes
                         great improvements to load speed. <a target="_blank" rel="noopener"
-                                href="https://www.redpill-linpro.com/sysadvent/2016/12/20/http2.html">Here</a> is a
+                                                             href="https://www.redpill-linpro.com/sysadvent/2016/12/20/http2.html">Here</a>
+                        is a
                         guide for enabling HTTP/2 in Nginx.
                     </div>
                 </div>
@@ -163,7 +167,7 @@
                 <div class="info-container">
                     <div class="info">Tell the browser when to download and execute a script file so it doesn't block
                         any other resources. I like <a target="_blank" rel="noopener"
-                                href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">this
+                                                       href="http://www.growingwiththeweb.com/2014/02/async-vs-defer-attributes.html">this
                             guide</a> for showing what each of these script attributes does.
                     </div>
                 </div>
@@ -177,7 +181,8 @@
 
                 <div class="info-container">
                     <div class="info">If you're using any 3rd party assets then you will have a DNS lookup attached,
-                        both these and your own resources can block each other or be loaded out-of-order. <a target="_blank" rel="noopener"
+                        both these and your own resources can block each other or be loaded out-of-order. <a
+                                target="_blank" rel="noopener"
                                 href="https://www.keycdn.com/blog/resource-hints/"> Here</a> is a guide for the various
                         values of the link attribute "rel" that tells the browser when and how to handle these
                         situations. <a target="_blank" rel="noopener"
@@ -227,9 +232,12 @@
 
                 <div class="info-container">
                     <div class="info">My favorite tools are <a target="_blank" rel="noopener"
-                                                               href="http://yellowlab.tools/">YellowLab.tools</a>, <a target="_blank" rel="noopener"
-                            href="http://www.webpagetest.org/">webpagetest.org</a>, and <a target="_blank" rel="noopener"
-                            href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a>. Make sure to test
+                                                               href="http://yellowlab.tools/">YellowLab.tools</a>, <a
+                            target="_blank" rel="noopener"
+                            href="http://www.webpagetest.org/">webpagetest.org</a>, and <a target="_blank"
+                                                                                           rel="noopener"
+                                                                                           href="https://developers.google.com/web/tools/lighthouse/">Lighthouse</a>.
+                        Make sure to test
                         in 4G, 3G, and Wi-Fi network environments as well as with popular devices.
                     </div>
                 </div>
@@ -271,7 +279,7 @@
                 <div class="info-container">
                     <div class="info">Google Analytics can help you target users and isolate problem areas for your
                         website. Philip Walton explains a <a target="_blank" rel="noopener"
-                                href="https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/">GA
+                                                             href="https://philipwalton.com/articles/the-google-analytics-setup-i-use-on-every-site-i-build/">GA
                             setup</a> that he uses to "reap its full benefits". Remember to connect your Search Console
                         and Analytics! Note that Bing is more important for U.S. targeted sites.
                     </div>
@@ -367,7 +375,7 @@
                         make social sharing much more appealing to people viewing the "share" on social media websites.
                         Both <a target="_blank" rel="noopener" href="https://developers.facebook.com/tools/debug/">Facebook</a>
                         and <a target="_blank" rel="noopener"
-                                href="https://cards-dev.twitter.com/validator">Twitter</a>
+                               href="https://cards-dev.twitter.com/validator">Twitter</a>
                         have tools to preview and debug your cards.
                     </div>
                 </div>
@@ -426,8 +434,9 @@
                                 responses to force TLS
                                 only access. Redirect all HTTP request to HTTPS on the server as backup
                             </li>
-                            <li>Cookies should be scoped by path and domain as well as utilize <a target="_blank" rel="noopener"
-                                    href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies">HttpOnly,
+                            <li>Cookies should be scoped by path and domain as well as utilize <a target="_blank"
+                                                                                                  rel="noopener"
+                                                                                                  href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies#Secure_and_HttpOnly_cookies">HttpOnly,
                                 SameSite, and Secure</a> attributes
                             </li>
                         </ul>
@@ -443,8 +452,10 @@
 
                 <div class="info-container">
                     <div class="info">When parsing input, remember to sanitize for data://, javascript://, and CRLF
-                        characters. Never directly inject user content into responses or <a target="_blank" rel="noopener"
-                                href="http://bobby-tables.com/">SQL statements</a>.
+                        characters. Never directly inject user content into responses or <a target="_blank"
+                                                                                            rel="noopener"
+                                                                                            href="http://bobby-tables.com/">SQL
+                            statements</a>.
                     </div>
                 </div>
             </li>
@@ -491,8 +502,10 @@
                     <div class="info">Ensure that a <a target="_blank" rel="noopener"
                                                        href="https://www.w3.org/TR/WCAG20-TECHS/G18.html">contrast ratio
                         of at least 4.5:1</a> exists between text and background. This improves readability for a
-                        majority of users and ensures the possibility of reading to a few. <a target="_blank" rel="noopener"
-                                href="http://accessible-colors.com/">Here</a> is more explanation and some visual
+                        majority of users and ensures the possibility of reading to a few. <a target="_blank"
+                                                                                              rel="noopener"
+                                                                                              href="http://accessible-colors.com/">Here</a>
+                        is more explanation and some visual
                         indicators.
                     </div>
                 </div>
@@ -505,7 +518,8 @@
                 </button>
 
                 <div class="info-container">
-                    <div class="info">Make sure that the browser's keyboard shortcuts are not overwritten. <a target="_blank" rel="noopener"
+                    <div class="info">Make sure that the browser's keyboard shortcuts are not overwritten. <a
+                            target="_blank" rel="noopener"
                             href="https://w3c.github.io/using-aria/">Use the WAI-ARIA attributes</a> which give semantic
                         information about the role, state, and property to assistive technologies.
                     </div>
@@ -522,7 +536,8 @@
                     <div class="info">Use semantic markup and clear styling to convey the menu element and structure
                         that is consistent with every page. A usability tip is to ensure all pages are accessible
                         through three or fewer clicks from the homepage. <a target="_blank" rel="noopener"
-                                href="https://www.w3.org/WAI/tutorials/menus/">Here</a> is a guide to creating
+                                                                            href="https://www.w3.org/WAI/tutorials/menus/">Here</a>
+                        is a guide to creating
                         accessible menus.
                     </div>
                 </div>
@@ -605,7 +620,7 @@
                         <ul>
                             <li>Links are descriptive and appear "clickable"</li>
                             <li>External links use the <a target="_blank" rel="noopener"
-                                    href="https://developers.google.com/web/tools/lighthouse/audits/noopener">rel="noopener"</a>
+                                                          href="https://developers.google.com/web/tools/lighthouse/audits/noopener">rel="noopener"</a>
                                 attribute
                             </li>
                             <li>Important links don't move (auto carousels or accordions)</li>
@@ -659,7 +674,8 @@
                 <div class="info-container">
                     <div class="info">Test on the major browsers such as Chrome, Firefox, Safari, IE/Edge, and Opera.
                         Utilize tools or libraries such as <a target="_blank" rel="noopener"
-                                                 href="https://modernizr.com/">Modernizr</a> to only use features that
+                                                              href="https://modernizr.com/">Modernizr</a> to only use
+                        features that
                         are available to the user.
                     </div>
                 </div>
@@ -676,7 +692,7 @@
                         style rules while all the resources stay the same. The most common change is a mobile drop-down
                         menu. I use Chrome's device toolbar from within the
                         Developer Tools as well as <a target="_blank" rel="noopener"
-                                href="https://chrome.google.com/webstore/detail/emmet-review/epejoicbhllgiimigokgjdoijnpaphdp">Emmet
+                                                      href="https://chrome.google.com/webstore/detail/emmet-review/epejoicbhllgiimigokgjdoijnpaphdp">Emmet
                             Re:view</a> to test page view throughout development down to around 300px.
                     </div>
                 </div>
@@ -690,7 +706,9 @@
 
                 <div class="info-container">
                     <div class="info">All relevant inputs have the <a target="_blank" rel="noopener"
-                            href="http://html5doctor.com/html5-forms-input-types/" title="Guide to html5 user input types">type</a> attribute set for a better
+                                                                      href="http://html5doctor.com/html5-forms-input-types/"
+                                                                      title="Guide to html5 user input types">type</a>
+                        attribute set for a better
                         user experience.
                     </div>
                 </div>
@@ -701,17 +719,21 @@
 <footer>
     Website created by <a target="_blank" rel="noopener" href="https://harrisjt.com">HarrisJT</a> <span>/</span> View
     the source code and suggest edits
-    on <a target="_blank" rel="noopener" href="https://github.com/HarrisJT/web-launch-checklist">Github</a> <span>/</span>
+    on <a target="_blank" rel="noopener" href="https://github.com/HarrisJT/web-launch-checklist">Github</a>
+    <span>/</span>
     Download <a href="" download>docx</a> or <a href="" download>pdf</a> versions
 </footer>
 
 <script>
-  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  window.ga = window.ga || function () {
+        (ga.q = ga.q || []).push(arguments)
+      };
+  ga.l = +new Date;
 
   ga('create', 'UA-100237888-1', 'auto');
   ga('send', 'pageview');
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
 </body>
 </html>
 
