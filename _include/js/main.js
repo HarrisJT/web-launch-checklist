@@ -1,10 +1,10 @@
 const checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
 
-const items = document.querySelectorAll('.checklist-item');
-const buttons = document.querySelectorAll('.checklist-item__expand');
-const labels = document.querySelectorAll('.checklist-item__title');
+const items = Array.from(document.querySelectorAll('.checklist-item'));
+const buttons = Array.from(document.querySelectorAll('.checklist-item__expand'));
+const labels = Array.from(document.querySelectorAll('.checklist-item__title'));
 
-const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
 const checkboxesLength = checkboxes.length;
 
 const progress = document.querySelector('.progress__bar');
@@ -41,14 +41,14 @@ function countChecked() {
     const sectionCheckedPercentage = thisSection.querySelectorAll('input:checked').length / thisSection.querySelectorAll('.checklist-item').length;
     thisSection.querySelector('.checklist__percentage-border').style.transform = `scaleX(${sectionCheckedPercentage})`;
   } else {
-    document.querySelectorAll('.checklist').forEach((checklist) => {
+    Array.from(document.querySelectorAll('.checklist')).forEach((checklist) => {
       const checklistCheckedPercentage = checklist.querySelectorAll('input:checked').length / checklist.querySelectorAll('.checklist-item').length;
       checklist.querySelector('.checklist__percentage-border').style.transform = `scaleX(${checklistCheckedPercentage})`;
     });
   }
 
   let globalCheckedCounter = 0;
-  document.querySelectorAll('input:checked').forEach(() => {
+  Array.from(document.querySelectorAll('input:checked')).forEach(() => {
     globalCheckedCounter += 1;
   });
 
@@ -61,7 +61,6 @@ function countChecked() {
 
 // Initialize the global counter and update checkbox checked boolean from localstorage
 function loadValues() {
-
   const initialCounterValue = checkboxValues.globalCounter || 0;
   counter.innerText = `${initialCounterValue}/${checkboxesLength}`;
 
@@ -110,5 +109,9 @@ window.onload = function () {
     this.classList.remove('progress__reset--pressed');
   }, false);
 
-  console.info('Designed and Developed by Harris J. Thompson\nTwitter - www.twitter.com/HarrisJT_\nGitHub - www.github.com/HarrisJT');
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' });
+  }
+
+  console.info('Designed and Developed by Harris J. Thompson - www.harrisjt.com\nTwitter - www.twitter.com/HarrisJT_\nGitHub - www.github.com/HarrisJT');
 };

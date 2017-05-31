@@ -95,7 +95,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #585afa;
-  color: #f2f2f2;
+  color: #f5f5f5;
 }
 
 a {
@@ -111,12 +111,12 @@ a {
 }
 
 ::-moz-selection {
-  background: #b3d4fc;
+  background: rgba(33, 16, 118, .75);
   text-shadow: none;
 }
 
 ::selection {
-  background: #b3d4fc;
+  background: rgba(33, 16, 118, .75);
   text-shadow: none;
 }
 
@@ -157,7 +157,8 @@ a {
     transition: all .3s ease;
     letter-spacing: .025em;
 
-    &:hover {
+    &:hover,
+    &:focus {
       box-shadow: 0 7px 14px rgba(33, 16, 118, .08), 0 3px 6px rgba(33, 16, 118, .1);
       background: rgba(189, 106, 255, .8);
     }
@@ -250,6 +251,10 @@ a {
   transition: background 0.15s ease;
   cursor: pointer;
 
+  &:hover {
+    background: rgba(33, 16, 118, .5);
+  }
+
   &:after {
     content: "";
     position: absolute;
@@ -273,13 +278,18 @@ a {
   vertical-align: top;
   margin-left: 8px;
   cursor: pointer;
+  transition: color .25s ease;
+
+  &:hover,
+  &:focus {
+    color: #dcdcdc;
+  }
 }
 
 input[type=checkbox] {
   display: none;
 
   &:checked {
-
     & ~ .checkbox {
       border-color: transparent;
       background: #211076;
@@ -421,11 +431,21 @@ footer {
   }
 }
 
-// MEDIA QUERIES ==========================================================================
 
-@media only screen and (min-width: 30em) {
+// 404 & Offline Pages --------
 
+.title-404 {
+  text-align: center;
+  font-size: 6.5em;
+  width: 100%;
+  margin-bottom: 0;
 }
+
+.text-404 {
+  font-size: 2.5em;
+}
+
+
 
 // PRINT STYLES ==========================================================================
 
@@ -459,20 +479,13 @@ footer {
     content: "";
   }
 
-  tr,
   img {
     page-break-inside: avoid;
   }
 
-  p,
-  h2,
-  h3 {
+  h2 {
     orphans: 3;
     widows: 3;
-  }
-
-  h2,
-  h3 {
     page-break-after: avoid;
   }
 }

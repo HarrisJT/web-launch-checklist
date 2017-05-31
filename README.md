@@ -1,6 +1,6 @@
 # Web Launch Checklist
 
-This website displays the most useful and effective tips for Performance, SEO, Security, Accessibility, Content, and Functionality. I want it to be easy to edit so please fork and suggest changes!
+This website displays the most useful and effective tips for Performance, SEO, Security, Accessibility, Content, and Functionality in checklist form. The checkboxes and counters persist through localstorage and the whole document can be downloaded in multiple formats. I want it to be easy to edit so please fork and suggest changes!
 
 To start a development environment run these commands:
 
