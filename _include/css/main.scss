@@ -92,6 +92,7 @@ body {
   margin: 0;
   font-family: "Rubik", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   letter-spacing: .02em;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #585afa;
@@ -99,10 +100,10 @@ body {
 }
 
 a {
-  color: #57d490;
-  transition: all .2s ease;
+  color: #57eaa6;
+  transition: all 200ms ease;
   text-decoration: none;
-  border-bottom: 1px solid #57d490;
+  border-bottom: 1px solid #57eaa6;
   text-shadow: 0 1px 0 #585afa;
 
   &:hover {
@@ -126,8 +127,12 @@ a {
   text-align: center;
   font-weight: 500;
   font-size: 3.5em;
-  color: #e6e6e6;
   margin: .5em .2em .375em;
+
+  a {
+    color: #e6e6e6;
+    border: 0;
+  }
 }
 
 .progress {
@@ -154,12 +159,12 @@ a {
     height: 37px;
     line-height: 37px;
     border: 1px solid #211076;
-    transition: all .3s ease;
+    transition: all 300ms ease;
     letter-spacing: .025em;
 
     &:hover,
     &:focus {
-      box-shadow: 0 7px 14px rgba(33, 16, 118, .08), 0 3px 6px rgba(33, 16, 118, .1);
+      box-shadow: 0 7px 14px rgba(33, 16, 118, .16), 0 3px 6px rgba(33, 16, 118, .2);
       background: rgba(189, 106, 255, .8);
     }
 
@@ -168,7 +173,7 @@ a {
     }
 
     &--pressed {
-      animation: wiggle .35s ease alternate;
+      animation: wiggle 350ms ease alternate;
     }
   }
 
@@ -176,7 +181,7 @@ a {
     display: block;
     margin-top: 12px;
     border-bottom: 3px solid #57d490;
-    box-shadow: 0 20px 20px -20px rgba(33, 16, 118, .5);
+    box-shadow: 0 20px 20px -20px rgba(33, 16, 118, .65);
   }
 
   &__bar {
@@ -185,7 +190,7 @@ a {
     transform-origin: left;
     height: 17px;
     background: #21acb3;
-    transition: transform .5s ease;
+    transition: transform 500ms ease;
   }
 }
 
@@ -232,7 +237,7 @@ a {
   margin-bottom: 8px;
   height: 6px;
   background: #57d490;
-  transition: transform .35s ease;
+  transition: transform 350ms ease;
 }
 
 .checklist-item {
@@ -248,7 +253,7 @@ a {
   height: 20px;
   border: 2px solid #211076;
   border-radius: 3px;
-  transition: background 0.15s ease;
+  transition: background 150ms ease;
   cursor: pointer;
 
   &:hover {
@@ -266,7 +271,7 @@ a {
     transform: rotate(45deg) scale(0);
     border-right: 2px solid #bf6bfe;
     border-bottom: 2px solid #bf6bfe;
-    transition: all 0.325s ease;
+    transition: all 325ms ease;
   }
 }
 
@@ -278,7 +283,7 @@ a {
   vertical-align: top;
   margin-left: 8px;
   cursor: pointer;
-  transition: color .25s ease;
+  transition: color 250ms ease;
 
   &:hover,
   &:focus {
@@ -293,7 +298,7 @@ input[type=checkbox] {
     & ~ .checkbox {
       border-color: transparent;
       background: #211076;
-      animation: wiggle 0.5s ease;
+      animation: wiggle 400ms ease;
 
       &:after {
         opacity: 1;
@@ -303,7 +308,7 @@ input[type=checkbox] {
 
     & ~ .checklist-item__title {
       text-decoration: line-through;
-      transition: all .175s ease;
+      transition: all 175ms ease;
       opacity: .5;
     }
   }
@@ -340,7 +345,6 @@ input[type=checkbox] {
 }
 
 .checklist-item__expand {
-  display: inline-block;
   cursor: pointer;
   background: transparent;
   border: 0;
@@ -357,7 +361,7 @@ input[type=checkbox] {
   background: #211076;
   position: relative;
   top: 50%;
-  transition: all 0.3s cubic-bezier(.76, -0.26, .15, 1.32);
+  transition: all 300ms cubic-bezier(.76, -0.26, .15, 1.32);
   transform: translateY(-50%);
   transform-origin: center center;
 
@@ -368,7 +372,7 @@ input[type=checkbox] {
     height: 4px;
     background: #211076;
     position: absolute;
-    transition: all 0.3s cubic-bezier(.76, -0.26, .15, 1.32);
+    transition: all 300ms cubic-bezier(.76, -0.26, .15, 1.32);
     transform-origin: center center;
     transform: rotate(90deg);
   }
@@ -388,7 +392,7 @@ input[type=checkbox] {
 .info-container {
   max-height: 0;
   overflow: hidden;
-  transition: max-height .25s ease-in;
+  transition: max-height 300ms ease-in;
   line-height: 1.4;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   font-size: 1.063em;
@@ -412,6 +416,7 @@ input[type=checkbox] {
 
 .checklist .open .info-container {
   max-height: 500px;
+  transition-timing-function: ease-out;
 }
 
 footer {

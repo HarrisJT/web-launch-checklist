@@ -1,4 +1,4 @@
-const version = 'v1.01::';
+const version = 'v1.11::';
 const staticCacheName = `${version}static`;
 const pagesCacheName = `${version}pages`;
 const offlinePages = [

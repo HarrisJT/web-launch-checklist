@@ -1,6 +1,5 @@
 const checkboxValues = JSON.parse(localStorage.getItem('checkboxValues')) || {};
 
-const items = Array.from(document.querySelectorAll('.checklist-item'));
 const buttons = Array.from(document.querySelectorAll('.checklist-item__expand'));
 const labels = Array.from(document.querySelectorAll('.checklist-item__title'));
 
@@ -75,12 +74,8 @@ function loadValues() {
 // Toggle the checklist-item__info expansion and checklist-item__expand animation
 function toggleExpand() {
   const thisItem = this.parentNode;
-  items.forEach((item) => {
-    if (thisItem === item) {
-      thisItem.querySelector('.line').classList.toggle('closed');
-      thisItem.classList.toggle('open');
-    }
-  });
+  thisItem.querySelector('.line').classList.toggle('closed');
+  thisItem.classList.toggle('open');
 }
 
 // Uncheck all boxes and reset localstorage
