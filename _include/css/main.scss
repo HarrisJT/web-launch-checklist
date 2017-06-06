@@ -357,13 +357,11 @@ input[type=checkbox] {
 .line {
   display: block;
   width: 20px;
-  height: 4px;
   background: #211076;
-  position: relative;
-  top: 50%;
   transition: all 300ms cubic-bezier(.76, -0.26, .15, 1.32);
   transform: translateY(-50%);
   transform-origin: center center;
+  outline: 1px solid transparent;
 
   &:after {
     content: "";
@@ -371,10 +369,10 @@ input[type=checkbox] {
     width: 20px;
     height: 4px;
     background: #211076;
-    position: absolute;
     transition: all 300ms cubic-bezier(.76, -0.26, .15, 1.32);
     transform-origin: center center;
     transform: rotate(90deg);
+    outline: 1px solid transparent;
   }
 }
 
