@@ -12,7 +12,7 @@ To start a development environment run these commands:
 
 Please read the following for details on the process of submitting change ideas.
 
-#### Contributing with code:
+### Contributing with code:
 
 Create a fork of this repository, run the above commands to start a development environment, then submit a pull request with a title starting either "New:", "Modify:", or "Remove:" depending on the nature of your change.
 
@@ -45,7 +45,7 @@ You should limit yourself to editing the:
 
 
 
-#### Contributing without coding:
+### Contributing without coding:
 
 Create an [Issue](https://github.com/HarrisJT/web-launch-checklist/issues/new) with a title starting either "New:", "Modify:", or "Remove:" depending on the nature of your suggestion. Please be as detailed as possible and include credible links where necessary
 
