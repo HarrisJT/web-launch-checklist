@@ -417,9 +417,51 @@ input[type=checkbox] {
   transition-timing-function: ease-out;
 }
 
+.social {
+  margin-top: 1.75em;
+  font-size: 1.25em;
+  align-self: center;
+  text-align: center;
+}
+
+.social-buttons {
+  margin-top: 12px;
+  display: block;
+  background: none;
+  transition: all 400ms;
+
+  a {
+    display: inline-block;
+    border: 2px solid #e6e6e6;
+    border-radius: 3px;
+    width: 37px;
+    height: 37px;
+    cursor: pointer;
+
+    &.social-buttons__twitter {
+      background: url("../share-buttons.svg") no-repeat 5px 6px;
+      transition: border 200ms ease;
+
+      &:hover {
+        border: 2px dotted #bf6bfe;
+      }
+    }
+
+    &.social-buttons__facebook {
+      margin: 0 7px;
+      background: url("../share-buttons.svg") no-repeat -27px 6px;
+      transition: border 200ms ease;
+
+      &:hover {
+        border: 2px dotted #bf6bfe;
+      }
+    }
+  }
+}
+
 footer {
   align-self: center;
-  margin-top: 2em;
+  margin-top: 1.25em;
   border-top: 1px solid #57b26e;
   padding: .85em 1.85em;
   text-align: center;
@@ -434,7 +476,6 @@ footer {
   }
 }
 
-
 // 404 & Offline Pages --------
 
 .title-404 {
@@ -447,8 +488,6 @@ footer {
 .text-404 {
   font-size: 2.5em;
 }
-
-
 
 // PRINT STYLES ==========================================================================
 
