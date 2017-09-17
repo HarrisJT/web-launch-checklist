@@ -20,6 +20,7 @@ gulp.task('css', function () {
         browsers: ['last 2 versions'],
         cascade: false,
       }))
+
       .pipe(csscomb())
       .pipe(concat('main.min.css'))
       .pipe(cleanCSS())
