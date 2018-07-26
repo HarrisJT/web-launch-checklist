@@ -1,0 +1,6 @@
+.idea/
+node_modules/
+
+# Ignore built files
+public/
+.cache/
