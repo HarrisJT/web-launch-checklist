@@ -7,9 +7,7 @@
     "prettier",
     "prettier/react"
   ],
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react", "prettier"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
@@ -26,33 +24,9 @@
     "spyOn": true
   },
   "rules": {
+    "react/jsx-filename-extension": ["error", {"extensions": [".js", ".jsx"]}],
+    "global-require": "off",
     "no-console": "off",
-    "no-inner-declarations": "off",
-    "valid-jsdoc": "off",
-    "max-len": "off",
-    "require-jsdoc": "off",
-    "quotes": [
-      "error",
-      "backtick"
-    ],
-    "consistent-return": [
-      "error"
-    ],
-    "arrow-body-style": [
-      "error",
-      "as-needed",
-      {
-        "requireReturnForObjectLiteral": true
-      }
-    ],
-    "jsx-quotes": [
-      "error",
-      "prefer-double"
-    ],
-    "object-curly-spacing": [
-      "error",
-      "always"
-    ],
     "comma-dangle": [
       "error",
       {
@@ -63,14 +37,21 @@
         "functions": "ignore"
       }
     ],
-    "import/no-extraneous-dependencies": "off",
     "react/prop-types": [
       "error",
       {
-        "ignore": [
-          "children"
-        ]
+        "ignore": ["children"]
       }
-    ]
+    ],
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "no-underscore-dangle": "off",
+    "no-plusplus": "off",
+    "prefer-promise-reject-errors": "off",
+    "no-nested-ternary": "off",
+    "react/no-multi-comp": "off",
+    "prettier/prettier": "error"
   }
 }

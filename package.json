@@ -1,38 +1,49 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
-  "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
-    "gatsby": "next",
-    "gatsby-plugin-react-helmet": "next",
-    "react": "^16.4.1",
-    "react-dom": "^16.4.1",
-    "react-helmet": "^5.2.0"
+  "name": "WebLaunchChecklist",
+  "version": "2.0.0",
+  "description": "This website displays the most useful and effective tips for Performance, SEO, Security, Accessibility, Content, and Functionality for websites in checklist form.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarrisJT/web-launch-checklist.git"
   },
   "keywords": [
-    "gatsby"
+    "checklist",
+    "web",
+    "launch",
+    "weblaunchchecklist"
   ],
-  "license": "MIT",
+  "author": "Harris J Thompson",
+  "license": "CC BY-SA 4.0",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "lint": "eslint -c ./.eslintrc ./src --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint -c ./.eslintrc ./src --fix"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.8.0",
+    "eslint-plugin-prettier": "^2.7.0",
+    "gatsby": "^2.0.25",
+    "gatsby-plugin-react-helmet": "^3.0.0",
+    "gatsby-plugin-styled-components": "^3.0.0",
+    "gatsby-remark-external-links": "0.0.4",
+    "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-transformer-remark": "^2.1.7",
+    "prop-types": "^15.6.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-helmet": "^5.2.0",
+    "styled-components": "^3.4.10",
+    "typeface-rubik": "0.0.54"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.6",
-    "eslint": "^5.2.0",
-    "eslint-config-airbnb": "^17.0.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.10.0",
-    "prettier": "^1.13.7"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^2.10.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.14.3"
   }
 }
