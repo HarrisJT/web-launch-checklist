@@ -1,128 +1,192 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {graphql} from 'gatsby';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import 'typeface-rubik';
-import Layout from '../components/Layout';
+import MainLayout from '../components/layout';
+import check from '../images/check.svg';
+import {colors} from '../styles/variables';
 
 // TODO: change max-width to breakpoint system, use react.coms?
-const FormContainer = styled.form`
+const FormContainer = styled.main.attrs({id: 'content'})`
   max-width: 1260px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: '. . .' '. . .';
   grid-gap: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  break-inside: avoid;
+  margin: 0 auto;
+
+  fieldset {
+    background-color: #fff;
+    box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    padding: 1.15rem 1rem 1rem;
+    border-radius: 3px;
+    height: min-content;
+
+    h2 {
+      margin-top: 0;
+      font-weight: 500;
+    }
+  }
 `;
 
 const PostContainer = styled.div`
-  padding: 0 1.75rem;
-  user-select: none;
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  //min-height: 1px;
+  padding: 0 1rem 0 0;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
 `;
 
-const Checkbox = styled.input`
-  position: absolute;
-  top: 4px;
-  left: 0;
-  height: 20px;
+const wiggle = keyframes`
+  from {
+    transform: scale(1, 1);
+  }
+
+  30% {
+    transform: scale(1.15, .65);
+}
+
+  40% {
+    transform: scale(.65, 1.15);
+}
+
+  50% {
+    transform: scale(1.05, .75);
+}
+
+  65% {
+    transform: scale(.85, .95);
+}
+
+  75% {
+    transform: scale(.95, .85);
+}
+
+  to {
+    transform: scale(1, 1);
+  }
+`;
+
+const Input = styled.input.attrs({type: 'checkbox'})`
+  align-self: center;
+  z-index: 1;
   width: 20px;
-  border-radius: 4px;
+  height: 20px;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  position: absolute;
+  border: none;
+  outline: none;
   opacity: 0;
   margin: 0;
-  z-index: 1;
-  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: background-color 0.1s ease-in, color 0.1s ease-in;
 
-  & ~ .post__checkbox-indicator:after {
-    width: 6px;
-    height: 11px;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, 2px) rotate(45deg);
-    border: solid #fff;
-    border-width: 0 2px 2px 0;
+  &:focus,
+  &:hover {
+    & + .post__checkbox .checkbox__outer {
+      background-color: ${colors.backgroundDarker};
+    }
   }
 
-  &:disabled ~ .post__checkbox-indicator:after {
-    border-color: darkgray;
-  }
-
-  &:not(:disabled) {
-    &:checked {
-      & + span {
-        transition: all 175ms ease;
-        text-decoration: line-through;
-        opacity: 0.5;
-
-        & + .post__checkbox-indicator {
-          background: blue;
-
-          &:after {
-            display: block;
-          }
-        }
+  // Styles for the indicator when the input is checked
+  &:checked {
+    & + .post__checkbox {
+      .checkbox__outer {
+        background-color: ${colors.accent};
+        animation: ${wiggle} 300ms ease;
       }
 
-      &:focus,
-      &:hover {
-        & ~ .post__checkbox-indicator {
-          background: darkblue;
-        }
+      .checkbox__inner {
+        visibility: visible;
+        transform: scale(1);
       }
     }
 
     &:focus,
     &:hover {
-      & ~ .post__checkbox-indicator {
-        border: 1px solid theme-color('primary');
-        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px blue;
+      & + .post__checkbox .checkbox__outer {
+        background-color: ${colors.accentDark};
       }
     }
   }
+`;
 
-  &:disabled ~ .post__checkbox-indicator {
-    background: lightgray;
-    opacity: 0.65;
-    cursor: not-allowed !important;
+const Checkbox = styled.div.attrs({className: 'post__checkbox', 'aria-hidden': 'true'})`
+  height: 20px;
+  display: flex;
+  align-items: center;
+  z-index: 0;
+
+  .checkbox__outer {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    transition: background-color 200ms ease-in-out;
+    background-color: ${colors.backgroundDark};
+    border-radius: 3px;
+  }
+
+  .checkbox__inner {
+    visibility: hidden;
+    width: 14px;
+    height: 14px;
+    margin: 3px;
+    transform: scale(1.15);
+    transition: all 200ms ease-in-out;
+    background-size: contain;
+    background: url(${check}) no-repeat 50%;
   }
 `;
 
 const CheckboxTitle = styled.span`
-  width: 100%;
-  display: inline-block;
-`;
+  margin: 0 0 0 8px;
+  cursor: pointer;
+  font-size: 17px;
+  color: ${colors.headingText};
 
-const CheckboxIndicator = styled.div`
-  z-index: 0;
-  position: absolute;
-  margin-top: 0.125rem;
-  margin-bottom: 0.375rem;
-  top: 2px;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  border: 1px solid gray;
-  border-radius: 4px;
+  &.title--checked {
+    transition: all 175ms ease;
+    text-decoration: line-through;
+    opacity: 0.65;
+  }
 
-  &:after {
-    content: '';
-    position: absolute;
-    display: none;
+  &:hover,
+  &:focus {
+    color: ${colors.textDark};
   }
 `;
 
-const PostInfo = styled.div`
-  overflow: hidden;
+const PostRow = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  justify-content: flex-start;
+`;
+
+const PostInfo = styled.div.attrs({className: 'post__info-container'})`
+  visibility: collapse;
+  transition: max-height 300ms ease-in;
+  will-change: max-height, visibility;
   max-height: 0;
 
-  &.post__info-container--open {
+  &.info-container--opened {
+    visibility: visible;
     max-height: min-content;
+    padding-bottom: 0.75em;
+    margin-top: 0.55em;
+    border-bottom: 1px solid ${colors.border};
+    transition-timing-function: ease-out;
+  }
+
+  p:first-child {
+    margin-top: 0;
   }
 `;
 
@@ -144,7 +208,7 @@ class Home extends React.Component {
         edges: PropTypes.arrayOf(
           PropTypes.shape({
             node: PropTypes.object.isRequired,
-          }),
+          })
         ),
       }),
     }).isRequired,
@@ -153,29 +217,6 @@ class Home extends React.Component {
   state = {
     postsStatus: {},
   };
-
-  constructor(props) {
-    super(props);
-
-    this.categorizedPosts = groupByCategory(props.data.allMarkdownRemark.edges);
-
-    // Set up the data structure holding each posts open and checked status
-    for (let key in this.categorizedPosts) {
-      const {postsStatus} = this.state;
-      const postsInCategory = {};
-      this.categorizedPosts[key].forEach(post => {
-        postsInCategory[post.node.id] = {
-          checked: false,
-          opened: false,
-        };
-      });
-      postsStatus[key] = postsInCategory;
-    }
-  }
-
-  componentDidMount() {
-    this.hydrateStateWithLocalStorage();
-  }
 
   handleChecklistChange = (e, category, id) => {
     const {postsStatus} = this.state;
@@ -218,7 +259,6 @@ class Home extends React.Component {
     const {postsStatus} = this.state;
 
     postsStatus[category][id].opened = !postsStatus[category][id].opened;
-    console.log(postsStatus[category][id].opened);
 
     // Update React state
     this.setState({
@@ -229,17 +269,38 @@ class Home extends React.Component {
     localStorage.setItem('postsStatus', JSON.stringify(postsStatus));
   };
 
-  hydrateStateWithLocalStorage() {
-    const key = 'postsStatus';
+  constructor(props) {
+    super(props);
 
-    if (localStorage.hasOwnProperty(key)) {
+    this.categorizedPosts = groupByCategory(props.data.allMarkdownRemark.edges);
+
+    // Set up the data structure holding each posts open and checked status
+    for (let key in this.categorizedPosts) {
+      const {postsStatus} = this.state;
+      const postsInCategory = {};
+      this.categorizedPosts[key].forEach(post => {
+        postsInCategory[post.node.id] = {
+          checked: false,
+          opened: false,
+        };
+      });
+      postsStatus[key] = postsInCategory;
+    }
+  }
+
+  componentDidMount() {
+    this.hydrateStateWithLocalStorage();
+  }
+
+  hydrateStateWithLocalStorage() {
+    if (Object.prototype.hasOwnProperty.call(localStorage, 'postsStatus')) {
       // get the key's value from localStorage
-      let value = localStorage.getItem(key);
+      let value = localStorage.getItem('postsStatus');
 
       // parse the localStorage string and setState
       try {
         value = JSON.parse(value);
-        this.setState({[key]: value});
+        this.setState({postsStatus: value});
       } catch (e) {
         // handle empty string
       }
@@ -250,7 +311,7 @@ class Home extends React.Component {
     const {postsStatus} = this.state;
 
     return (
-      <Layout>
+      <MainLayout>
         <input
           onClick={this.handleChecklistReset}
           type="reset"
@@ -260,29 +321,30 @@ class Home extends React.Component {
         <FormContainer>
           {Object.keys(this.categorizedPosts).map(category => (
             <fieldset key={category}>
-              <legend>
-                <h2>{category}</h2>
-              </legend>
+              <h2>{category}</h2>
               {this.categorizedPosts[category].map(post => {
                 const {id, frontmatter, html} = post.node;
                 return (
                   <PostContainer key={id}>
-                    <Checkbox
-                      type="checkbox"
-                      value={frontmatter.title}
-                      checked={postsStatus[category][id].checked}
-                      onChange={e => this.handleChecklistChange(e, category, id)}
-                    />
-                    <CheckboxTitle onClick={() => this.handleExpand(category, id)}>
-                      {frontmatter.title}
-                    </CheckboxTitle>
-                    <CheckboxIndicator className="post__checkbox-indicator" />
+                    <PostRow>
+                      <Input
+                        value={frontmatter.title}
+                        checked={postsStatus[category][id].checked}
+                        onChange={e => this.handleChecklistChange(e, category, id)}
+                      />
+                      <Checkbox>
+                        <div className="checkbox__outer">
+                          <div className="checkbox__inner" />
+                        </div>
+                      </Checkbox>
+                      <CheckboxTitle
+                        onClick={() => this.handleExpand(category, id)}
+                        className={postsStatus[category][id].checked && 'title--checked'}>
+                        {frontmatter.title}
+                      </CheckboxTitle>
+                    </PostRow>
                     <PostInfo
-                      className={
-                        postsStatus[category][id].opened
-                          ? `post__info-container--open`
-                          : `post__info-container`
-                      }
+                      className={postsStatus[category][id].opened && `info-container--opened`}
                       dangerouslySetInnerHTML={{__html: html}}
                     />
                   </PostContainer>
@@ -291,7 +353,7 @@ class Home extends React.Component {
             </fieldset>
           ))}
         </FormContainer>
-      </Layout>
+      </MainLayout>
     );
   }
 }

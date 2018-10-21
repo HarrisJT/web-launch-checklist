@@ -1,29 +1,34 @@
 import React from 'react';
-import {Link} from 'gatsby';
+import styled from 'styled-components';
 
-const Header = ({siteTitle}) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}>
+import {Link} from 'gatsby';
+import {colors} from '../styles/variables';
+
+const Title = styled.h1`
+  font-size: 3.5em;
+  font-weight: 500;
+  margin: 0.5em 0.2em 0.375em;
+  text-align: center;
+`;
+
+const Header = () => (
+  <header>
+    <Title>
+      <Link
+        to="/"
+        style={{
+          color: `${colors.accent}`,
+          textDecoration: 'none',
+        }}>
+        WebLaunchChecklist
+      </Link>
+    </Title>
     <div
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}>
-      <h1 style={{margin: 0}}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}>
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
+        marginBottom: '5px',
+        textAlign: 'center',
+      }}
+    />
   </header>
 );
 

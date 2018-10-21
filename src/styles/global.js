@@ -1,8 +1,7 @@
-import {injectGlobal} from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 import {breakpoints, colors, fonts} from './variables';
 
-// eslint-disable-next-line no-unused-expressions
-injectGlobal`
+export const GlobalStyles = createGlobalStyle`
  :root {
     /* Base sizes */
     --baseSizeSmall: 100%; // 16px
@@ -22,6 +21,7 @@ injectGlobal`
     --setpTwoLarge: calc(var(--stepOneLarge) * var(--ratioLarge));
     --setpThreeLarge: calc(var(--setpTwoLarge) * var(--ratioLarge));
   }
+  
   * {
     box-sizing: border-box;
     
@@ -29,6 +29,7 @@ injectGlobal`
       outline-color: #d0a233;
     }
   }
+  
   html {
     font-size: var(--baseSizeSmall);
     line-height: 1.5;
@@ -39,6 +40,7 @@ injectGlobal`
     
     ${fonts.body}
   }
+  
   body {
     background-color: ${colors.background};
     margin: 0;
@@ -47,11 +49,13 @@ injectGlobal`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+  
   h1, h2, h3 {
      margin: var(--stepOneSmall) 0 0; 
      line-height: 1.1;
      ${fonts.heading}
   }
+  
   h1 {
     font-size: var(--stepThreeSmall);
     margin: 0 0 0.5rem;
@@ -60,6 +64,7 @@ injectGlobal`
       font-size: var(--setpThreeLarge);
     }
   }
+  
   h2 {
     font-size: var(--stepTwoSmall);
     
@@ -67,6 +72,7 @@ injectGlobal`
       font-size: var(--setpTwoLarge);
     }
   }
+  
   h3 {
     font-size: var(--stepOneSmall);
     
@@ -74,13 +80,16 @@ injectGlobal`
       font-size: var(--stepOneLarge);
     }
   }
+  
   p {
     margin: var(--stepOneSmall) 0 0;
-    line-height: 1.7;
+    line-height: 1.5;
   }
+  
   a {
     text-decoration: none;
   }
+  
   strong {
     font-weight: 600;
     color: ${colors.headingText};
@@ -95,6 +104,34 @@ injectGlobal`
   }
   
   fieldset {
-    height: min-content;
+    border: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
+`;
+
+export const SkipToContent = styled.a`
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: -99;
+
+  &:active,
+  &:focus,
+  &:hover {
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: auto;
+    height: auto;
+    overflow: visible;
   }
 `;
