@@ -23,6 +23,11 @@ const fonts = {
         font-weight: 400;
         color: ${colors.bodyText};
     `,
+  mono: `
+        font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-weight: 400;
+        color: ${colors.bodyText};
+    `,
 };
 
 const sizes = {

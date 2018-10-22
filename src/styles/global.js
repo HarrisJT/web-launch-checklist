@@ -1,7 +1,7 @@
-import styled, {createGlobalStyle} from 'styled-components';
+import {createGlobalStyle} from 'styled-components';
 import {breakpoints, colors, fonts} from './variables';
 
-export const GlobalStyles = createGlobalStyle`
+export default createGlobalStyle`
  :root {
     /* Base sizes */
     --baseSizeSmall: 100%; // 16px
@@ -111,27 +111,5 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-  }
-`;
-
-export const SkipToContent = styled.a`
-  position: absolute;
-  top: -1000px;
-  left: -1000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  z-index: -99;
-
-  &:active,
-  &:focus,
-  &:hover {
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    width: auto;
-    height: auto;
-    overflow: visible;
   }
 `;

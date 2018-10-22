@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 import {Normalize} from 'styled-normalize';
 
 import Header from './Header';
-import {GlobalStyles, SkipToContent} from '../styles/global';
+import GlobalStyles from '../styles/global';
 
 class Layout extends React.PureComponent {
   static propTypes = {
@@ -27,7 +27,6 @@ class Layout extends React.PureComponent {
         </Helmet>
         <Normalize />
         <GlobalStyles />
-        <SkipToContent href="#content">Skip To Content</SkipToContent>
         <Header />
         {children}
       </React.Fragment>

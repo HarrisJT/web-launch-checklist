@@ -3,11 +3,23 @@ import PropTypes from 'prop-types';
 import {graphql} from 'gatsby';
 import styled, {keyframes} from 'styled-components';
 import 'typeface-rubik';
-import MainLayout from '../components/layout';
+import Layout from '../components/layout';
 import check from '../images/check.svg';
-import {colors} from '../styles/variables';
+import {colors, fonts} from '../styles/variables';
 
 // TODO: change max-width to breakpoint system, use react.coms?
+const ProgressContainer = styled.section`
+  width: min-content;
+  display: block;
+  margin: 0.5rem auto;
+`;
+
+const ProgressCount = styled.span`
+  letter-spacing: 0.05em;
+  margin-right: 0.5rem;
+  ${fonts.mono};
+`;
+
 const FormContainer = styled.main.attrs({id: 'content'})`
   max-width: 1260px;
   display: grid;
@@ -26,6 +38,8 @@ const FormContainer = styled.main.attrs({id: 'content'})`
     h2 {
       margin-top: 0;
       font-weight: 500;
+      padding-bottom: 0.45rem;
+      border-bottom: 2px solid #21acb3;
     }
   }
 `;
@@ -190,15 +204,14 @@ const PostInfo = styled.div.attrs({className: 'post__info-container'})`
   }
 `;
 
-// TODO: change "memo" name
-const groupByCategory = arr =>
-  arr.reduce((memo, edge) => {
+const groupByCategory = array =>
+  array.reduce((accumulator, edge) => {
     const node = edge.node.frontmatter;
-    if (!memo[node['category']]) {
-      memo[node['category']] = [];
+    if (!accumulator[node['category']]) {
+      accumulator[node['category']] = [];
     }
-    memo[node['category']].push(edge);
-    return memo;
+    accumulator[node['category']].push(edge);
+    return accumulator;
   }, {});
 
 class Home extends React.Component {
@@ -216,26 +229,67 @@ class Home extends React.Component {
 
   state = {
     postsStatus: {},
+    checkedStats: {
+      checkedCount: 0,
+      checkboxAmount: 0,
+    },
   };
 
-  handleChecklistChange = (e, category, id) => {
-    const {postsStatus} = this.state;
-    const element = e.target;
+  constructor(props) {
+    super(props);
+    const {postsStatus, checkedStats} = this.state;
 
-    // check if the checkbox is being checked or unchecked
-    postsStatus[category][id].checked = !!element.checked;
+    this.categorizedPosts = groupByCategory(props.data.allMarkdownRemark.edges);
 
-    // Update React state
-    this.setState({
-      postsStatus,
+    // Set the number of checkboxes
+    checkedStats.checkboxAmount = props.data.allMarkdownRemark.edges.length;
+
+    // Set up the data structure holding each posts open and checked status
+    for (let key in this.categorizedPosts) {
+      const postsInCategory = {};
+      if (Object.prototype.hasOwnProperty.call(this.categorizedPosts, key)) {
+        this.categorizedPosts[key].forEach(post => {
+          postsInCategory[post.node.id] = {
+            checked: false,
+            opened: false,
+          };
+        });
+        postsStatus[key] = postsInCategory;
+      }
+    }
+  }
+
+  componentDidMount() {
+    this.getPostsFromLocalStorage()
+      .then(posts => {
+        // Hydrate the state with Local Storage
+        this.setState({postsStatus: posts});
+        this.countChecked(posts);
+      })
+      .catch(err => {
+        console.info(err);
+      });
+  }
+
+  getPostsFromLocalStorage() {
+    return new Promise((resolve, reject) => {
+      if (Object.prototype.hasOwnProperty.call(localStorage, 'postsStatus')) {
+        // Get the key's value from localStorage
+        const postsStatusValue = localStorage.getItem('postsStatus');
+
+        try {
+          resolve(JSON.parse(postsStatusValue));
+        } catch (e) {
+          reject('Error parsing Local Storage.');
+        }
+      } else {
+        reject('No Local Storage to load.');
+      }
     });
-
-    // Update local storage
-    localStorage.setItem('postsStatus', JSON.stringify(postsStatus));
-  };
+  }
 
   handleChecklistReset = () => {
-    const {postsStatus} = this.state;
+    const {postsStatus, checkedStats} = this.state;
 
     // Loop through each object and set to false
     Object.keys(postsStatus).forEach(category => {
@@ -248,13 +302,36 @@ class Home extends React.Component {
     // Update React state
     this.setState({
       postsStatus,
+      checkedStats: {
+        ...checkedStats,
+        checkedCount: 0,
+      },
     });
 
     // Update local storage
     localStorage.removeItem('postsStatus');
   };
 
-  // TODO: can this be done better?
+  handleChecklistChange = (e, category, id) => {
+    const {postsStatus, checkedStats} = this.state;
+    const element = e.target;
+
+    // Check if the checkbox is being checked or unchecked
+    postsStatus[category][id].checked = !!element.checked;
+
+    // Change the checked counter
+    element.checked ? checkedStats.checkedCount++ : checkedStats.checkedCount--;
+
+    // Update React state
+    this.setState({
+      postsStatus,
+      checkedStats,
+    });
+
+    // Update local storage
+    localStorage.setItem('postsStatus', JSON.stringify(postsStatus));
+  };
+
   handleExpand = (category, id) => {
     const {postsStatus} = this.state;
 
@@ -269,55 +346,44 @@ class Home extends React.Component {
     localStorage.setItem('postsStatus', JSON.stringify(postsStatus));
   };
 
-  constructor(props) {
-    super(props);
+  countChecked(posts) {
+    const {checkedStats} = this.state;
+    let checkedCounter = 0;
 
-    this.categorizedPosts = groupByCategory(props.data.allMarkdownRemark.edges);
-
-    // Set up the data structure holding each posts open and checked status
-    for (let key in this.categorizedPosts) {
-      const {postsStatus} = this.state;
-      const postsInCategory = {};
-      this.categorizedPosts[key].forEach(post => {
-        postsInCategory[post.node.id] = {
-          checked: false,
-          opened: false,
-        };
+    Object.keys(posts).forEach(category => {
+      Object.keys(posts[category]).forEach(postId => {
+        if (posts[category][postId].checked) {
+          checkedCounter++;
+        }
       });
-      postsStatus[key] = postsInCategory;
-    }
-  }
+    });
 
-  componentDidMount() {
-    this.hydrateStateWithLocalStorage();
-  }
-
-  hydrateStateWithLocalStorage() {
-    if (Object.prototype.hasOwnProperty.call(localStorage, 'postsStatus')) {
-      // get the key's value from localStorage
-      let value = localStorage.getItem('postsStatus');
-
-      // parse the localStorage string and setState
-      try {
-        value = JSON.parse(value);
-        this.setState({postsStatus: value});
-      } catch (e) {
-        // handle empty string
-      }
-    }
+    // Update React state
+    this.setState({
+      checkedStats: {
+        ...checkedStats,
+        checkedCount: checkedCounter,
+      },
+    });
   }
 
   render() {
-    const {postsStatus} = this.state;
+    const {postsStatus, checkedStats} = this.state;
 
     return (
-      <MainLayout>
-        <input
-          onClick={this.handleChecklistReset}
-          type="reset"
-          value="Reset"
-          title="Reset Checkboxes"
-        />
+      <Layout>
+        <ProgressContainer>
+          <ProgressCount>{`${checkedStats.checkedCount}/${
+            checkedStats.checkboxAmount
+          }`}</ProgressCount>
+          <input
+            onClick={this.handleChecklistReset}
+            type="reset"
+            value="Reset"
+            title="Reset Checkboxes"
+            tabIndex="0"
+          />
+        </ProgressContainer>
         <FormContainer>
           {Object.keys(this.categorizedPosts).map(category => (
             <fieldset key={category}>
@@ -353,7 +419,7 @@ class Home extends React.Component {
             </fieldset>
           ))}
         </FormContainer>
-      </MainLayout>
+      </Layout>
     );
   }
 }
