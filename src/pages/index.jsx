@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {graphql} from 'gatsby';
-import styled, {keyframes} from 'styled-components';
-import 'typeface-rubik';
+import styled, {css, keyframes} from 'styled-components';
 import Layout from '../components/layout';
 import check from '../images/check.svg';
 import {colors, fonts} from '../styles/variables';
@@ -18,6 +17,37 @@ const ProgressCount = styled.span`
   letter-spacing: 0.05em;
   margin-right: 0.5rem;
   ${fonts.mono};
+`;
+
+const ResetButton = styled.input`
+  outline: none;
+  color: ${colors.background};
+  cursor: pointer;
+  background: rgba(33, 16, 118, 0.75);
+  box-shadow: 0 4px 6px rgba(33, 16, 118, 0.11), 0 1px 3px rgba(33, 16, 118, 0.1);
+  padding: 0 14px;
+  border-radius: 3px;
+  display: inline-block;
+  height: 37px;
+  line-height: 37px;
+  border: 1px solid #211076;
+  transition: all 300ms ease;
+  letter-spacing: 0.025em;
+  ${props =>
+    props.active &&
+    css`
+      animation: ${wiggle} 350ms ease alternate;
+    `};
+
+  &:hover,
+  &:focus {
+    box-shadow: 0 7px 14px rgba(33, 16, 118, 0.16), 0 3px 6px rgba(33, 16, 118, 0.2);
+    background: rgba(106, 124, 216, 0.8);
+  }
+
+  &:active {
+    box-shadow: 0 4px 6px rgba(33, 16, 118, 0.11), 0 1px 3px rgba(33, 16, 118, 0.1);
+  }
 `;
 
 const FormContainer = styled.main.attrs({id: 'content'})`
@@ -39,7 +69,7 @@ const FormContainer = styled.main.attrs({id: 'content'})`
       margin-top: 0;
       font-weight: 500;
       padding-bottom: 0.45rem;
-      border-bottom: 2px solid #21acb3;
+      border-bottom: 2px solid ${colors.border};
     }
   }
 `;
@@ -96,7 +126,7 @@ const Input = styled.input.attrs({type: 'checkbox'})`
   margin: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
-  transition: background-color 0.1s ease-in, color 0.1s ease-in;
+  transition: background-color 150ms ease-in;
 
   &:focus,
   &:hover {
@@ -111,11 +141,13 @@ const Input = styled.input.attrs({type: 'checkbox'})`
       .checkbox__outer {
         background-color: ${colors.accent};
         animation: ${wiggle} 300ms ease;
+        transition: background-color 200ms ease-in-out;
       }
 
       .checkbox__inner {
         visibility: visible;
         transform: scale(1);
+        transition: all 200ms ease-in-out;
       }
     }
 
@@ -138,7 +170,6 @@ const Checkbox = styled.div.attrs({className: 'post__checkbox', 'aria-hidden': '
     width: 20px;
     height: 20px;
     position: relative;
-    transition: background-color 200ms ease-in-out;
     background-color: ${colors.backgroundDark};
     border-radius: 3px;
   }
@@ -149,7 +180,6 @@ const Checkbox = styled.div.attrs({className: 'post__checkbox', 'aria-hidden': '
     height: 14px;
     margin: 3px;
     transform: scale(1.15);
-    transition: all 200ms ease-in-out;
     background-size: contain;
     background: url(${check}) no-repeat 50%;
   }
@@ -233,6 +263,7 @@ class Home extends React.Component {
       checkedCount: 0,
       checkboxAmount: 0,
     },
+    resetActive: false,
   };
 
   constructor(props) {
@@ -288,8 +319,18 @@ class Home extends React.Component {
     });
   }
 
+  handleResetAnimation = () => {
+    this.setState({resetActive: true});
+    setTimeout(() => {
+      this.setState({
+        resetActive: false,
+      });
+    }, 350);
+  };
+
   handleChecklistReset = () => {
     const {postsStatus, checkedStats} = this.state;
+    this.handleResetAnimation();
 
     // Loop through each object and set to false
     Object.keys(postsStatus).forEach(category => {
@@ -368,7 +409,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const {postsStatus, checkedStats} = this.state;
+    const {postsStatus, checkedStats, resetActive} = this.state;
 
     return (
       <Layout>
@@ -376,12 +417,14 @@ class Home extends React.Component {
           <ProgressCount>{`${checkedStats.checkedCount}/${
             checkedStats.checkboxAmount
           }`}</ProgressCount>
-          <input
+          <ResetButton
             onClick={this.handleChecklistReset}
+            onMouseDown={e => e.preventDefault()}
             type="reset"
             value="Reset"
             title="Reset Checkboxes"
             tabIndex="0"
+            active={resetActive}
           />
         </ProgressContainer>
         <FormContainer>

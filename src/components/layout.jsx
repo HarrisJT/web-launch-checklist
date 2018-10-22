@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import {Normalize} from 'styled-normalize';
+import 'typeface-rubik';
 
 import Header from './Header';
 import GlobalStyles from '../styles/global';

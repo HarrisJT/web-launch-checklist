@@ -20,7 +20,7 @@ const Header = () => (
           color: `${colors.accent}`,
           textDecoration: 'none',
         }}>
-        WebLaunchChecklist
+        Web Launch Checklist
       </Link>
     </Title>
     <p
