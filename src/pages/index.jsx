@@ -10,7 +10,7 @@ import {colors, fonts} from '../styles/variables';
 const ProgressContainer = styled.section`
   width: min-content;
   display: block;
-  margin: 0.5rem auto;
+  margin: 0.75rem auto;
 `;
 
 const ProgressCount = styled.span`
@@ -111,6 +111,18 @@ const wiggle = keyframes`
   }
 `;
 
+const PostRow = styled.div`
+  position: relative;
+  width: 100%;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-flow: row nowrap;
+`;
+
 const Input = styled.input.attrs({type: 'checkbox'})`
   align-self: center;
   z-index: 1;
@@ -162,6 +174,7 @@ const Input = styled.input.attrs({type: 'checkbox'})`
 
 const Checkbox = styled.div.attrs({className: 'post__checkbox', 'aria-hidden': 'true'})`
   height: 20px;
+  margin-top: 3px;
   display: flex;
   align-items: center;
   z-index: 0;
@@ -188,7 +201,6 @@ const Checkbox = styled.div.attrs({className: 'post__checkbox', 'aria-hidden': '
 const CheckboxTitle = styled.span`
   margin: 0 0 0 8px;
   cursor: pointer;
-  font-size: 17px;
   color: ${colors.headingText};
 
   &.title--checked {
@@ -201,17 +213,6 @@ const CheckboxTitle = styled.span`
   &:focus {
     color: ${colors.textDark};
   }
-`;
-
-const PostRow = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  border: 0;
-  cursor: pointer;
-  justify-content: flex-start;
 `;
 
 const PostInfo = styled.div.attrs({className: 'post__info-container'})`
@@ -422,7 +423,7 @@ class Home extends React.Component {
             onMouseDown={e => e.preventDefault()}
             type="reset"
             value="Reset"
-            title="Reset Checkboxes"
+            title="Reset All Checkboxes"
             tabIndex="0"
             active={resetActive}
           />

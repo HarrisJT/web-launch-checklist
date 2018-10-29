@@ -6,6 +6,7 @@ import 'typeface-rubik';
 
 import Header from './Header';
 import GlobalStyles from '../styles/global';
+import Footer from './Footer';
 
 class Layout extends React.PureComponent {
   static propTypes = {
@@ -30,6 +31,7 @@ class Layout extends React.PureComponent {
         <GlobalStyles />
         <Header />
         {children}
+        <Footer />
       </React.Fragment>
     );
   }

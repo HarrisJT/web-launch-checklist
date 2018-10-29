@@ -103,6 +103,7 @@ export default createGlobalStyle`
     }
   }
   
+  // Reset fieldset styles
   fieldset {
     border: none;
     margin: 0;
